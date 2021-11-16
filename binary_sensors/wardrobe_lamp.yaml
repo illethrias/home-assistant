@@ -1,0 +1,24 @@
+- platform: mqtt
+  name: "Wardrobe Lamp Input"
+  unique_id: binary_sensor.wardrobe_lamp_input
+  value_template: "{{ value_json.state }}"
+  payload_on: "true"
+  payload_off: "false"
+  state_topic: shellies/wardrobe-lamp/status/input:0
+
+- platform: mqtt  
+  name: "Wardrobe Lamp Firmware Update"
+  unique_id: binary_sensor.wardrobe_lamp_firmware_update
+  device_class: update
+  state_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  value_template: >
+    {%- if value_json.result.sys.available_updates.stable is defined %}
+    ON
+    {%- else %}
+    OFF
+    {%- endif %}
+  json_attributes_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  json_attributes_template: >
+    {%- if value_json.result.sys.available_updates.stable is defined %}
+    {{ value_json.result.sys.available_updates.stable | tojson }}
+    {%- endif %}

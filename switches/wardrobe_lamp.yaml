@@ -1,0 +1,11 @@
+- platform: mqtt
+  name: "Wardrobe Lamp Switch"
+  unique_id: switch.wardrobe_lamp
+  payload_on: '{"id":1, "src": "homeassistant/shelly/wardrobe-lamp", "method": "Switch.Set", "params":{"id":0,"on":true}}'
+  payload_off: '{"id":1, "src": "homeassistant/shelly/wardrobe-lamp", "method": "Switch.Set", "params":{"id":0,"on":false}}'
+  qos: 1
+  state_topic: shellies/wardrobe-lamp/status/switch:0
+  value_template: "{{ value_json.output }}"
+  state_on: true
+  state_off: false
+  command_topic: shellies/wardrobe-lamp/rpc

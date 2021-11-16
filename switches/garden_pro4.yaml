@@ -1,0 +1,47 @@
+- platform: mqtt
+  name: "Garden Pro4 Switch 0"
+  unique_id: switch.garden_pro4_relay_0
+  payload_on: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":0,"on":true}}'
+  payload_off: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":0,"on":false}}'
+  qos: 1
+  state_topic: shellies/garden-pro4/status/switch:0
+  value_template: "{{ value_json.output }}"
+  state_on: true
+  state_off: false
+  command_topic: shellies/garden-pro4/rpc
+
+- platform: mqtt
+  name: "Garden Pro4 Switch 1"
+  unique_id: switch.garden_pro4_relay_1
+  payload_on: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":1,"on":true}}'
+  payload_off: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":1,"on":false}}'
+  qos: 1
+  state_topic: shellies/garden-pro4/status/switch:1
+  value_template: "{{ value_json.output }}"
+  state_on: true
+  state_off: false
+  command_topic: shellies/garden-pro4/rpc
+
+- platform: mqtt
+  name: "Garden Pro4 Switch 2"
+  unique_id: switch.garden_pro4_relay_2
+  payload_on: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":2,"on":true}}'
+  payload_off: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":2,"on":false}}'
+  qos: 1
+  state_topic: shellies/garden-pro4/status/switch:2
+  value_template: "{{ value_json.output }}"
+  state_on: true
+  state_off: false
+  command_topic: shellies/garden-pro4/rpc
+
+- platform: mqtt
+  name: "Garden Pro4 Switch 3"
+  unique_id: switch.garden_pro4_relay_3
+  payload_on: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":3,"on":true}}'
+  payload_off: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method": "Switch.Set", "params":{"id":3,"on":false}}'
+  qos: 1
+  state_topic: shellies/garden-pro4/status/switch:3
+  value_template: "{{ value_json.output }}"
+  state_on: true
+  state_off: false
+  command_topic: shellies/garden-pro4/rpc

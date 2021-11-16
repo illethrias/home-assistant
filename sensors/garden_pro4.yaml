@@ -1,0 +1,171 @@
+- platform: mqtt
+  name: "Garden Pro4 Temperature 0"
+  unique_id: sensor.garden_pro4_temperature_0
+  device_class: temperature
+  unit_of_measurement: '°C'
+  icon: mdi:temperature-celsius
+  state_topic: shellies/garden-pro4/status/switch:0
+  value_template: "{{ value_json.temperature.tC }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Temperature 1"
+  unique_id: sensor.garden_pro4_temperature_1
+  device_class: temperature
+  unit_of_measurement: '°C'
+  icon: mdi:temperature-celsius
+  state_topic: shellies/garden-pro4/status/switch:1
+  value_template: "{{ value_json.temperature.tC }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Temperature 2"
+  unique_id: sensor.garden_pro4_temperature_2
+  device_class: temperature
+  unit_of_measurement: '°C'
+  icon: mdi:temperature-celsius
+  state_topic: shellies/garden-pro4/status/switch:2
+  value_template: "{{ value_json.temperature.tC }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Temperature 3"
+  unique_id: sensor.garden_pro4_temperature_3
+  device_class: temperature
+  unit_of_measurement: '°C'
+  icon: mdi:temperature-celsius
+  state_topic: shellies/garden-pro4/status/switch:3
+  value_template: "{{ value_json.temperature.tC }}"
+  
+- platform: mqtt
+  name: "Garden Pro4 Voltage 0"
+  unique_id: sensor.garden_pro4_voltage_0
+  device_class: voltage
+  unit_of_measurement: 'V'
+  state_topic: shellies/garden-pro4/status/switch:0
+  value_template: "{{ value_json.voltage }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Voltage 1"
+  unique_id: sensor.garden_pro4_voltage_1
+  device_class: voltage
+  unit_of_measurement: 'V'
+  state_topic: shellies/garden-pro4/status/switch:1
+  value_template: "{{ value_json.voltage }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Voltage 2"
+  unique_id: sensor.garden_pro4_voltage_2
+  device_class: voltage
+  unit_of_measurement: 'V'
+  state_topic: shellies/garden-pro4/status/switch:2
+  value_template: "{{ value_json.voltage }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Voltage 3"
+  unique_id: sensor.garden_pro4_voltage_3
+  device_class: voltage
+  unit_of_measurement: 'V'
+  state_topic: shellies/garden-pro4/status/switch:3
+  value_template: "{{ value_json.voltage }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Power 0"
+  unique_id: sensor.garden_pro4_power_0
+  device_class: power
+  unit_of_measurement: 'W'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:0
+  value_template: "{{ (value_json.apower|float) | round(1) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Power 1"
+  unique_id: sensor.garden_pro4_power_1
+  device_class: power
+  unit_of_measurement: 'W'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:1
+  value_template: "{{ (value_json.apower|float) | round(1) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Power 2"
+  unique_id: sensor.garden_pro4_power_2
+  device_class: power
+  unit_of_measurement: 'W'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:2
+  value_template: "{{ (value_json.apower|float) | round(1) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Power 3"
+  unique_id: sensor.garden_pro4_power_3
+  device_class: power
+  unit_of_measurement: 'W'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:3
+  value_template: "{{ (value_json.apower|float) | round(1) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Energy 0"
+  unique_id: sensor.garden_pro4_energy_0
+  device_class: energy
+  state_class: total_increasing
+  unit_of_measurement: 'kWh'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:0
+  value_template: "{{ ((value_json.aenergy.total / 1000)|float) | round(2) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Energy 1"
+  unique_id: sensor.garden_pro4_energy_1
+  device_class: energy
+  state_class: total_increasing
+  unit_of_measurement: 'kWh'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:1
+  value_template: "{{ ((value_json.aenergy.total / 1000)|float) | round(2) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Energy 2"
+  unique_id: sensor.garden_pro4_energy_2
+  device_class: energy
+  state_class: total_increasing
+  unit_of_measurement: 'kWh'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:2
+  value_template: "{{ ((value_json.aenergy.total / 1000)|float) | round(2) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Energy 3"
+  unique_id: sensor.garden_pro4_energy_3
+  device_class: energy
+  state_class: total_increasing
+  unit_of_measurement: 'kWh'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/garden-pro4/status/switch:3
+  value_template: "{{ ((value_json.aenergy.total / 1000)|float) | round(2) }}"
+
+- platform: mqtt
+  name: "Garden Pro4 Uptime"
+  unique_id: sensor.garden_pro4_uptime
+  device_class: timestamp
+  state_topic: homeassistant/shelly/garden-pro4/rpc
+  value_template: "{{(as_timestamp(now())-value_json.result.sys.uptime)|timestamp_local}}"
+
+- platform: mqtt
+  name: "Garden Pro4 IP"
+  unique_id: sensor.garden_pro4_ip
+  state_topic: homeassistant/shelly/garden-pro4/rpc
+  value_template: "{{ value_json.result.wifi.sta_ip }}"
+  
+- platform: mqtt
+  name: "Garden Pro4 SSID"
+  unique_id: sensor.garden_pro4_ssid
+  icon: mdi:wifi
+  state_topic: homeassistant/shelly/garden-pro4/rpc
+  value_template: "{{ value_json.result.wifi.ssid }}"
+
+- platform: mqtt
+  name: "Garden Pro4 RSSI"
+  unique_id: sensor.garden_pro4_rssi
+  unit_of_measurement: dBm
+  device_class: signal_strength
+  state_topic: homeassistant/shelly/garden-pro4/rpc
+  value_template: "{{ value_json.result.wifi.rssi }}"

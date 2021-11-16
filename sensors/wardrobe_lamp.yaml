@@ -1,0 +1,63 @@
+- platform: mqtt
+  name: "Wardrobe Lamp Temperature"
+  unique_id: sensor.wardrobe_lamp_temperature
+  device_class: temperature
+  unit_of_measurement: '°C'
+  icon: mdi:temperature-celsius
+  state_topic: shellies/wardrobe-lamp/status/switch:0
+  value_template: "{{ value_json.temperature.tC }}"
+  
+- platform: mqtt
+  name: "Wardrobe Lamp Voltage"
+  unique_id: sensor.wardrobe_lamp_voltage
+  device_class: voltage
+  unit_of_measurement: 'V'
+  state_topic: shellies/wardrobe-lamp/status/switch:0
+  value_template: "{{ value_json.voltage }}"
+
+- platform: mqtt
+  name: "Wardrobe Lamp Power"
+  unique_id: sensor.wardrobe_lamp_power
+  device_class: power
+  unit_of_measurement: 'W'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/wardrobe-lamp/status/switch:0
+  value_template: "{{ (value_json.apower|float) | round(1) }}"
+
+- platform: mqtt
+  name: "Wardrobe Lamp Energy"
+  unique_id: sensor.wardrobe_lamp_energy
+  device_class: energy
+  state_class: total_increasing
+  unit_of_measurement: 'kWh'
+  icon: mdi:lightning-bolt-outline
+  state_topic: shellies/wardrobe-lamp/status/switch:0
+  value_template: "{{ ((value_json.aenergy.total / 1000)|float) | round(2) }}"
+
+- platform: mqtt
+  name: "Wardrobe Lamp Uptime"
+  unique_id: sensor.wardrobe_lamp_uptime
+  device_class: timestamp
+  state_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  value_template: "{{(as_timestamp(now())-value_json.result.sys.uptime)|timestamp_local}}"
+
+- platform: mqtt
+  name: "Wardrobe Lamp IP"
+  unique_id: sensor.wardrobe_lamp_ip
+  state_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  value_template: "{{ value_json.result.wifi.sta_ip }}"
+  
+- platform: mqtt
+  name: "Wardrobe Lamp SSID"
+  unique_id: sensor.wardrobe_lamp_ssid
+  icon: mdi:wifi
+  state_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  value_template: "{{ value_json.result.wifi.ssid }}"
+
+- platform: mqtt
+  name: "Wardrobe Lamp RSSI"
+  unique_id: sensor.wardrobe_lamp_rssi
+  unit_of_measurement: dBm
+  device_class: signal_strength
+  state_topic: homeassistant/shelly/wardrobe-lamp/rpc
+  value_template: "{{ value_json.result.wifi.rssi }}"

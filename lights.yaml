@@ -1,0 +1,3 @@
+- platform: switch
+  name: Wardrobe Lamp
+  entity_id: switch.wardrobe_lamp

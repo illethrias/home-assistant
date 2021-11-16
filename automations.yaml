@@ -1,0 +1,19 @@
+- id: shellies_get_status
+  alias: Shellies Get Status
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time_pattern
+    hours: /1
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      topic: shellies/wardrobe-lamp/rpc
+      payload: '{"id":1, "src": "homeassistant/shelly/wardrobe-lamp", "method":"Shelly.GetStatus"}'
+  - service: mqtt.publish
+    data:
+      topic: shellies/garden-pro4/rpc
+      payload: '{"id":1, "src": "homeassistant/shelly/garden-pro4", "method":"Shelly.GetStatus"}'
+  mode: single
