@@ -2,32 +2,32 @@
   name: "Garden Pro4 Input 0"
   unique_id: binary_sensor.garden_pro4_input_0
   value_template: "{{ value_json.state }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: "True"
+  payload_off: "False"
   state_topic: shellies/garden-pro4/status/input:0
 
 - platform: mqtt
   name: "Garden Pro4 Input 1"
   unique_id: binary_sensor.garden_pro4_input_1
   value_template: "{{ value_json.state }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: "True"
+  payload_off: "False"
   state_topic: shellies/garden-pro4/status/input:1
 
 - platform: mqtt
   name: "Garden Pro4 Input 2"
   unique_id: binary_sensor.garden_pro4_input_2
   value_template: "{{ value_json.state }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: "True"
+  payload_off: "False"
   state_topic: shellies/garden-pro4/status/input:2
 
 - platform: mqtt
   name: "Garden Pro4 Input 3"
   unique_id: binary_sensor.garden_pro4_input_3
   value_template: "{{ value_json.state }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: "True"
+  payload_off: "False"
   state_topic: shellies/garden-pro4/status/input:3
 
 - platform: mqtt  
