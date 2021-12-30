@@ -2,8 +2,8 @@
   name: "Wardrobe Lamp Input"
   unique_id: binary_sensor.wardrobe_lamp_input
   value_template: "{{ value_json.state }}"
-  payload_on: "true"
-  payload_off: "false"
+  payload_on: "True"
+  payload_off: "False"
   state_topic: shellies/wardrobe-lamp/status/input:0
 
 - platform: mqtt  
